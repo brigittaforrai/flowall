@@ -16,7 +16,7 @@ export default new Router({
       component: Connect
     },
     {
-      path: '/projection',
+      path: `${publicPath}/projection`,
       name: 'projection',
       component: Project
     }

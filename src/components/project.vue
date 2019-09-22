@@ -6,12 +6,12 @@
 
 <script>
 import io from 'socket.io-client'
-import {config} from './../config.js'
+import {config, server} from './../config.js'
 
 export default {
   data() {
     return {
-      socket : io('localhost:3001'),
+      socket : io(server),
       widget: null
     }
   },

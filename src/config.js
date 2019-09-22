@@ -1,3 +1,5 @@
+const server = process.env.NODE_ENV === 'production' ? 'https://designhet2019.herokuapp.com/' : 'localhost:3001'
+
 const config = [
   {
     name: "xgap",
@@ -76,5 +78,6 @@ const RED = '#f9423a'
 
 export {
   config,
-  RED
+  RED,
+  server
 }

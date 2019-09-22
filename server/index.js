@@ -2,19 +2,19 @@ const express = require('express')
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send('ok')
+  res.send('designhet2019 server is running')
 })
 
-let port = process.env.PORT || 3001
-const server = app.listen(3001, function(){
-    console.log('server is running on port 3001')
+const port = process.env.PORT || 3001
+const server = app.listen(port, function(){
+    console.log(`server is running on port ${port}`)
 })
 
 const io = require('socket.io')(server)
 
 
-
 let open = true
+
 io.on('connection', function(socket) {
 
   socket.on('SEND', function(data) {

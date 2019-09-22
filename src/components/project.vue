@@ -19,8 +19,8 @@ export default {
     this.widget = document.querySelector(".widget")
     this.update(config)
 
-    this.socket.on('CONFIG', (data) => {
-        this.update(data.config)
+    this.socket.on('VALUES', (data) => {
+        this.update(data.values)
     })
   },
   methods: {

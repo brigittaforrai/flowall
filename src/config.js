@@ -9,8 +9,7 @@ const config = [
     max: 500,
     step: 1,
     randomMin: 40,
-    randomMax: 200,
-    value: 100
+    randomMax: 200
   },
   {
     name: "zgap",
@@ -19,8 +18,7 @@ const config = [
     max: 500,
     step: 1,
     randomMin: 40,
-    randomMax: 200,
-    value: 100
+    randomMax: 200
   },
   {
     name: "nodesize",
@@ -29,8 +27,7 @@ const config = [
     max: 100,
     step: 1,
     randomMin: 5,
-    randomMax: 50,
-    value: 30
+    randomMax: 50
   },
   {
     name: "spacing",
@@ -39,8 +36,7 @@ const config = [
     max: 100,
     step: 0.1,
     randomMin: 1,
-    randomMax: 100,
-    value: 50
+    randomMax: 100
   },
   {
     name: "tempo",
@@ -50,8 +46,7 @@ const config = [
     max: 1,
     step: 0.001,
     randomMin: 0.02,
-    randomMax: 0.3,
-    value: 0.02
+    randomMax: 0.3
   },
   {
     name: "ampl",
@@ -60,8 +55,7 @@ const config = [
     max: 200,
     step: 1,
     randomMin: 50,
-    randomMax: 200,
-    value: 100
+    randomMax: 200
   },
   {
     name: "period",
@@ -70,8 +64,7 @@ const config = [
     max: 5000,
     step: 1,
     randomMin: 1,
-    randomMax: 1000,
-    value: 1000
+    randomMax: 1000
   }
 ]
 

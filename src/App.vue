@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <header>
-      the flow
-    </header>
     <router-view/>
   </div>
 </template>
@@ -15,6 +12,9 @@ html, body, #app {
   padding: 0;
   box-sizing: border-box;
 }
+#app * {
+  box-sizing: border-box;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +23,17 @@ html, body, #app {
   color: white;
   background-color: black;
   padding: 16px;
+}
+button.big {
+  width: 100%;
+  height: 60px;
+  background: #f9423a;
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  outline: none;
 }
 </style>

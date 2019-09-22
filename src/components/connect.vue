@@ -1,7 +1,12 @@
 <template>
   <div class="connect" style="color: white">
+    <header>
+      the flow
+    </header>
+
     <Remote v-if="this.connected"></Remote>
     <button @click="connect"
+            class="big"
             v-if="!this.connected"
             :disabled="!this.opened">{{connectBtnText}}</button>
   </div>
@@ -30,14 +35,15 @@ export default {
     }
   },
   mounted () {
-    this.socket.emit('ISOPEN')
-
     this.socket.on('OPEN', (data) => {
-      this.opened = data
+      this.opened = data.open
+      // connection closes
       if (this.opened && this.connected) {
         this.connected = false
       }
     })
+
+    this.socket.emit('ISOPEN')
   },
   methods: {
     connect () {
@@ -45,7 +51,7 @@ export default {
       this.socket.emit('CONNECTED')
     },
     disConnect () {
-      this.socket.emit('DISCONNECT', {})
+      this.socket.emit('DISCONNECT')
     }
   }
 }
@@ -55,18 +61,9 @@ export default {
   .connect {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
-  }
-  button {
-    width: 100%;
-    height: 60px;
-    background: red;
-    color: white;
-    border: none;
-    font-size: 1.2em;
-    border-radius: 5px;
-    text-transform: uppercase;
+    flex-direction: column;
   }
 </style>

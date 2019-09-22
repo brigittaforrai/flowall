@@ -1,9 +1,15 @@
 <template>
   <div class="remote">
-    <div class="config-item" :key="s.name" v-for="s in this.config">
-      <label :for="s.name">{{s._name}}: {{s.value}}</label>
-      <input :step="s.step" :min="s.min" :max="s.max" type="range" :name="s.name" v-model.number="s.value" @change="send">
+
+    <div v-if="mergedConfig">
+      <div class="config-item" :key="s.name" v-for="s in mergedConfig">
+        <label :for="s.name">{{s._name}}</label>
+        <input :step="s.step" :min="s.min" :max="s.max" type="range" :name="s.name" v-model.number="s.value" @change="send">
+      </div>
     </div>
+
+    <button class="big"
+            @click="disconnect">disconnect</button>
   </div>
 </template>
 
@@ -16,38 +22,67 @@ export default {
   data() {
     return {
       socket : io(server),
-      c: config
+      attrs: config,
+      vals: null
     }
   },
   mounted () {
+    // update cfg
+    this.socket.on('INIT_VALUES', (data) => {
+      this.vals = data.values
+    })
+    // ask config from server
+    this.socket.emit('GET_VALUES')
+
     window.addEventListener("deviceorientation", (e) => {
       console.log(e, "device orientation event");
     })
   },
   computed: {
-    config() {
-      return this.c
+    mergedConfig() {
+      if (this.vals) {
+        let r = this.attrs.map((a) => {
+          let item = this.vals.find(f => f.name === a.name)
+          a.value = item.value
+          return a
+        })
+        return r
+      } else {
+        return []
+      }
     }
   },
   methods: {
     send() {
-      let result = this.config.map(item => ({name: item.name, value: item.value}))
+      let result = this.attrs.map(item => ({name: item.name, value: item.value}))
       this.socket.emit('SEND', {
-        config: result
+        values: result
       })
+    },
+    disconnect() {
+      this.socket.emit('DISCONNECT')
     }
   }
 }
 </script>
 
 <style scoped>
-.interface label {
+.remote {
+  width: 100%;
+  max-width: 500px;
+}
+.config-item {
+  text-align: left;
+  padding: 7px 10px;
+  width: 100%;
+}
+label {
   color: white;
   height: 100%;
   padding: 0px 0 5px 0;
   text-transform: uppercase;
   font-family: helvetica;
-  font-size: 12px;
+  font-size: 14px;
 }
 /* http://danielstern.ca/range.css/#/ */
 input[type=range] {

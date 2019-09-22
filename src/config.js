@@ -1,4 +1,5 @@
-const server = process.env.NODE_ENV === 'production' ? 'https://designhet2019.herokuapp.com/' : 'localhost:3001'
+const isProd = process.env.NODE_ENV === 'production'
+const server = isProd ? 'https://designhet2019.herokuapp.com/' : 'localhost:3001'
 
 const config = [
   {

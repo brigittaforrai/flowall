@@ -7,7 +7,6 @@ import { publicPath } from './../vue.config.js'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   base: publicPath,
   routes: [
     {
@@ -16,7 +15,7 @@ export default new Router({
       component: Connect
     },
     {
-      path: `${publicPath}/projection`,
+      path: '/projection',
       name: 'projection',
       component: Project
     }

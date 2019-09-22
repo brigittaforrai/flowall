@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/designhet2019/precache-manifest.2d0fa389abe6b928c535b38778d8b6fc.js"
+  "/designhet2019/precache-manifest.a400adef26a0510e92f32363050f4f44.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "design-het-remote"});

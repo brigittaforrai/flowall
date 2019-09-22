@@ -12,14 +12,23 @@ export default {
   data() {
     return {
       socket : io(server),
-      widget: null
+      widget: null,
+      vals: null
     }
   },
   mounted() {
     this.widget = document.querySelector(".widget")
-    this.update(config)
+
+    // ask config from server
+    this.socket.emit('GET_VALUES')
+
+    this.socket.on('INIT_VALUES', (data) => {
+      this.vals = data.values
+      this.update(data.values)
+    })
 
     this.socket.on('VALUES', (data) => {
+        this.vals = data.values
         this.update(data.values)
     })
   },

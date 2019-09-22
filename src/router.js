@@ -11,12 +11,10 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'play',
       component: Connect
     },
     {
-      path: '/projection',
-      name: 'projection',
+      path: `/projection`,
       component: Project
     }
   ]

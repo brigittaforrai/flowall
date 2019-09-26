@@ -35,9 +35,9 @@ export default {
     }
   },
   mounted () {
-    console.log("works");
     this.socket.on('OPEN', (data) => {
       this.opened = data.open
+      console.log(data.open, 'init isopen?');
       // connection closes
       if (this.opened && this.connected) {
         this.connected = false

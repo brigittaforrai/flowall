@@ -27,9 +27,7 @@ export default {
       socket : io(server),
       attrs: config,
       vals: null,
-      canvas: null,
-      rotating: false,
-      rotation: {x: 0, y: 0}
+      canvas: null
     }
   },
   mounted () {
@@ -42,14 +40,6 @@ export default {
 
     this.canvas = document.querySelector('canvas')
     this.addEvents()
-  },
-  watch: {
-    rotation: {
-      deep: true,
-      handler (newVal, oldVal) {
-        this.socket.emit('ROTATE', this.rotation)
-      }
-    }
   },
   computed: {
     mergedConfig() {
@@ -77,12 +67,10 @@ export default {
       // this.socket.emit('DISCONNECT')
     },
     addEvents() {
-      this.canvas.addEventListener("touchstart", (e) => {
-        this.rotating = true
-      })
-      this.canvas.addEventListener("touchend", (e) => {
-        this.rotating = false
-      })
+      // this.canvas.addEventListener("touchstart", (e) => {
+      // })
+      // this.canvas.addEventListener("touchend", (e) => {
+      // })
       this.canvas.addEventListener("touchmove", (e) => {
         let rect = this.canvas.getBoundingClientRect();
         let t = e.touches[0]
@@ -91,10 +79,9 @@ export default {
         let xp = (x / rect.width) * 100
         let yp = (y / rect.height) * 100
         if (xp > 100 || xp < 0 || yp > 100 || yp < 0) {
-          this.rotating = false
+          // todo
         } else {
-          this.rotating = true
-          this.rotation = { x: xp, y: yp }
+          this.socket.emit('ROTATE', {x: xp, y: yp})
         }
       })
     }

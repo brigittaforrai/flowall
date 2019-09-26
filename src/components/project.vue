@@ -1,12 +1,12 @@
 <template lang="html">
   <div>
-    <design-het class="widget" circles="3"></design-het>
+    <design-het class="widget" installation="true" circles="3"></design-het>
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client'
-import {config, server} from './../config.js'
+import {server} from './../config.js'
 
 export default {
   data() {
@@ -45,7 +45,6 @@ export default {
     rotate(values) {
       this.widget.setAttribute('rotatex', values.x)
       this.widget.setAttribute('rotatey', values.y)
-      console.log(values);
     }
   }
 }

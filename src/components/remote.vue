@@ -1,15 +1,18 @@
 <template>
   <div class="remote">
 
-    <div v-if="mergedConfig">
+    <button class="circle disconnect"
+            @click="disconnect">x</button>
+
+    <div class="container" v-if="mergedConfig">
       <div class="config-item" :key="s.name" v-for="s in mergedConfig">
         <label :for="s.name">{{s._name}}</label>
         <input :step="s.step" :min="s.min" :max="s.max" type="range" :name="s.name" v-model.number="s.value" @change="send">
       </div>
     </div>
 
-    <button class="big"
-            @click="disconnect">disconnect</button>
+    <canvas></canvas>
+
   </div>
 </template>
 
@@ -23,7 +26,10 @@ export default {
     return {
       socket : io(server),
       attrs: config,
-      vals: null
+      vals: null,
+      canvas: null,
+      rotating: false,
+      rotation: {x: 0, y: 0}
     }
   },
   mounted () {
@@ -34,9 +40,16 @@ export default {
     // ask config from server
     this.socket.emit('GET_VALUES')
 
-    window.addEventListener("deviceorientation", (e) => {
-      console.log(e, "device orientation event");
-    })
+    this.canvas = document.querySelector('canvas')
+    this.addEvents()
+  },
+  watch: {
+    rotation: {
+      deep: true,
+      handler (newVal, oldVal) {
+        this.socket.emit('ROTATE', this.rotation)
+      }
+    }
   },
   computed: {
     mergedConfig() {
@@ -60,21 +73,59 @@ export default {
       })
     },
     disconnect() {
-      this.socket.emit('DISCONNECT')
+      this.getOrientation()
+      // this.socket.emit('DISCONNECT')
+    },
+    addEvents() {
+      this.canvas.addEventListener("touchstart", (e) => {
+        this.rotating = true
+      })
+      this.canvas.addEventListener("touchend", (e) => {
+        this.rotating = false
+      })
+      this.canvas.addEventListener("touchmove", (e) => {
+        let rect = this.canvas.getBoundingClientRect();
+        let t = e.touches[0]
+        let x = t.clientX - rect.left
+        let y = t.clientY - rect.top
+        let xp = (x / rect.width) * 100
+        let yp = (y / rect.height) * 100
+        if (xp > 100 || xp < 0 || yp > 100 || yp < 0) {
+          this.rotating = false
+        } else {
+          this.rotating = true
+          this.rotation = { x: xp, y: yp }
+        }
+      })
     }
   }
 }
 </script>
 
 <style scoped>
+canvas {
+  width: calc(100% - 20px);
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px;
+  box-sizing: border-box;
+}
 .remote {
   width: 100%;
   max-width: 500px;
 }
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .config-item {
   text-align: left;
   padding: 7px 10px;
-  width: 100%;
+  width: 50%;
 }
 label {
   color: white;
@@ -84,90 +135,99 @@ label {
   font-family: helvetica;
   font-size: 14px;
 }
+.disconnect {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+input {
+  background-color: black;
+}
 /* http://danielstern.ca/range.css/#/ */
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
-  margin: 8.55px 0;
+  margin: 7.5px 0;
 }
 input[type=range]:focus {
   outline: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 9.9px;
+  height: 10px;
   cursor: pointer;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  background: #f14341;
-  border-radius: 1.3px;
-  border: 0px solid rgba(1, 1, 1, 0);
+  background: #f9423a;
+  border-radius: 25px;
+  border: 0.3px solid rgba(0, 0, 106, 0);
 }
 input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 27px;
-  width: 10px;
-  border-radius: 4px;
+  height: 25px;
+  width: 25px;
+  border-radius: 11px;
   background: #ffffff;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -8.55px;
+  margin-top: -7.8px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #f35b59;
+  background: #fb7b75;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
-  height: 9.9px;
+  height: 10px;
   cursor: pointer;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  background: #f14341;
-  border-radius: 1.3px;
-  border: 0px solid rgba(1, 1, 1, 0);
+  background: #f9423a;
+  border-radius: 25px;
+  border: 0.3px solid rgba(0, 0, 106, 0);
 }
 input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 27px;
-  width: 10px;
-  border-radius: 4px;
+  height: 25px;
+  width: 25px;
+  border-radius: 11px;
   background: #ffffff;
   cursor: pointer;
 }
 input[type=range]::-ms-track {
   width: 100%;
-  height: 9.9px;
+  height: 10px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #ef2b29;
-  border: 0px solid rgba(1, 1, 1, 0);
-  border-radius: 2.6px;
+  background: #ef1107;
+  border: 0.3px solid rgba(0, 0, 106, 0);
+  border-radius: 50px;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
 }
 input[type=range]::-ms-fill-upper {
-  background: #f14341;
-  border: 0px solid rgba(1, 1, 1, 0);
-  border-radius: 2.6px;
+  background: #f9423a;
+  border: 0.3px solid rgba(0, 0, 106, 0);
+  border-radius: 50px;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
 }
 input[type=range]::-ms-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 27px;
-  width: 10px;
-  border-radius: 4px;
+  height: 25px;
+  width: 25px;
+  border-radius: 11px;
   background: #ffffff;
   cursor: pointer;
-  height: 9.9px;
+  height: 10px;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #f14341;
+  background: #f9423a;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #f35b59;
+  background: #fb7b75;
 }
+
 </style>

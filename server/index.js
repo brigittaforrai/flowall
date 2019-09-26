@@ -47,6 +47,11 @@ let values = [
 
 io.on('connection', function(socket) {
 
+  socket.on('ROTATE', function(data) {
+    console.log(data, 'rotation');
+    io.emit('SET_ROTATION', data)
+  })
+
   socket.on('SEND', function(data) {
     values = data.values
     io.emit('VALUES', {values: values})

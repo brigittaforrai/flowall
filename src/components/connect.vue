@@ -35,6 +35,7 @@ export default {
     }
   },
   mounted () {
+    console.log("works");
     this.socket.on('OPEN', (data) => {
       this.opened = data.open
       // connection closes

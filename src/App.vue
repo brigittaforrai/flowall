@@ -24,16 +24,23 @@ html, body, #app {
   background-color: black;
   padding: 16px;
 }
-button.big {
-  width: 100%;
-  height: 60px;
+button {
   background: #f9423a;
   color: white;
   border: none;
   font-size: 1.2em;
-  border-radius: 5px;
   text-transform: uppercase;
   font-weight: bold;
   outline: none;
+}
+button.big {
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+}
+button.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
 }
 </style>

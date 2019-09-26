@@ -31,12 +31,21 @@ export default {
         this.vals = data.values
         this.update(data.values)
     })
+
+    this.socket.on('SET_ROTATION', (data) => {
+        this.rotate(data)
+    })
   },
   methods: {
     update(data) {
       data.forEach((c) => {
         this.widget.setAttribute(c.name, c.value)
       })
+    },
+    rotate(values) {
+      this.widget.setAttribute('rotatex', values.x)
+      this.widget.setAttribute('rotatey', values.y)
+      console.log(values);
     }
   }
 }

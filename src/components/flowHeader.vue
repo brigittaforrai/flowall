@@ -2,8 +2,8 @@
   <header class="bold">
     <h1>flow</h1>
     <div class="language-selector">
-      <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang' : 'lang'">HUN</div>
-      <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang' : 'lang'">ENG</div>
+      <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang button circle' : 'lang button circle'">HUN</div>
+      <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang button circle' : 'lang button circle'">ENG</div>
     </div>
   </header>
 </template>
@@ -11,14 +11,14 @@
 <script>
 export default {
   name: 'FlowHeader',
-  data () {
-    return {
-      language: 'HUN'
+  computed: {
+    language() {
+      return this.$store.state.language
     }
   },
   methods: {
     select(lang) {
-      this.language = lang
+      this.$store.commit('setLanguage', lang)
     }
   }
 }
@@ -30,25 +30,14 @@ export default {
      align-items: baseline;
      justify-content: space-between;
      width: 100%;
+     margin-bottom: 20px;
    }
   .language-selector {
     display: flex;
   }
   .lang {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
     background-color: white;
     color: black;
-    display: flex;
-    align-items: center;
-    padding: 8px 5px 5px;
-    font-size: 12px;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
   }
   .lang:first-of-type {
     margin-right: 5px;

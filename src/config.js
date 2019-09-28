@@ -3,42 +3,6 @@ const server = isProd ? 'https://designhet2019.herokuapp.com/' : 'http://192.168
 
 const config = [
   {
-    name: "xgap",
-    _name: "pontsűrűség-x",
-    min: 50,
-    max: 300,
-    step: 1,
-    randomMin: 50,
-    randomMax: 200
-  },
-  {
-    name: "zgap",
-    _name: "pontsűrűség-y",
-    min: 50,
-    max: 300,
-    step: 1,
-    randomMin: 50,
-    randomMax: 200
-  },
-  {
-    name: "nodesize",
-    _name: "méret",
-    min: 2,
-    max: 100,
-    step: 1,
-    randomMin: 5,
-    randomMax: 50
-  },
-  {
-    name: "spacing",
-    _name: "hullámhossz",
-    min: 0,
-    max: 100,
-    step: 0.1,
-    randomMin: 1,
-    randomMax: 100
-  },
-  {
     name: "tempo",
     _name: "tempó",
     default: 0,
@@ -46,7 +10,74 @@ const config = [
     max: 1,
     step: 0.001,
     randomMin: 0.02,
-    randomMax: 0.3
+    randomMax: 0.3,
+    type: 'big',
+    eng: "tempo"
+  },
+  {
+    name: "rotatex",
+    _name: "x forgatás",
+    min: -90,
+    max: 90,
+    step: 1,
+    randomMin: -90,
+    randomMax: 90,
+    type: 'big',
+    eng: "rotation X"
+  },
+  {
+    name: "rotatey",
+    _name: "y forgatás",
+    default: 0,
+    min: -90,
+    max: 90,
+    step: 1,
+    randomMin: -90,
+    randomMax: 90,
+    type: 'big',
+    eng: "rotation Y"
+  },
+  {
+    name: "rotatez",
+    _name: "z forgatás",
+    default: 0,
+    min: -90,
+    max: 90,
+    step: 1,
+    randomMin: -90,
+    randomMax: 90,
+    type: 'big',
+    eng: "rotation Z"
+  },
+  {
+    name: "xgap",
+    _name: "pontsűrűség-x",
+    min: 50,
+    max: 500,
+    step: 1,
+    randomMin: 50,
+    randomMax: 200,
+    eng: "x gap"
+  },
+  {
+    name: "zgap",
+    _name: "pontsűrűség-y",
+    min: 50,
+    max: 500,
+    step: 1,
+    randomMin: 50,
+    randomMax: 200,
+    eng: "y gap"
+  },
+  {
+    name: "nodesize",
+    _name: "méret",
+    min: 1,
+    max: 100,
+    step: 1,
+    randomMin: 5,
+    randomMax: 50,
+    eng: "node size"
   },
   {
     name: "ampl",
@@ -55,7 +86,18 @@ const config = [
     max: 200,
     step: 1,
     randomMin: 50,
-    randomMax: 200
+    randomMax: 200,
+    eng: "amplitude"
+  },
+  {
+    name: "spacing",
+    _name: "hullámhossz",
+    min: 0,
+    max: 100,
+    step: 0.1,
+    randomMin: 1,
+    randomMax: 100,
+    eng: "spacing"
   },
   {
     name: "period",
@@ -64,36 +106,8 @@ const config = [
     max: 5000,
     step: 1,
     randomMin: 1,
-    randomMax: 1000
-  },
-  {
-    name: "rotatex",
-    _name: "x foratas",
-    min: -90,
-    max: 90,
-    step: 1,
-    randomMin: -90,
-    randomMax: 90
-  },
-  {
-    name: "rotatey",
-    _name: "y foratas",
-    default: 0,
-    min: -90,
-    max: 90,
-    step: 1,
-    randomMin: -90,
-    randomMax: 90
-  },
-  {
-    name: "rotatez",
-    _name: "z foratas",
-    default: 0,
-    min: -90,
-    max: 90,
-    step: 1,
-    randomMin: -90,
-    randomMax: 90
+    randomMax: 1000,
+    eng: "period"
   }
 ]
 

@@ -1,15 +1,25 @@
 <template>
   <div class="remote">
 
-    <button class="circle disconnect"
-            @click="disconnect">x</button>
-
     <div class="container" v-if="inputs && savedVals">
-      <div class="config-item" :key="s.name" v-for="s in inputs">
-        <label :for="s.name">{{s._name}}</label>
-        <input :step="s.step" :min="s.min" :max="s.max" type="range" :name="s.name" v-model.number="savedVals[s.name]">
+      <div :class="(s.type === 'big') ? 'big config-item' : 'config-item'"
+           :key="s.name"
+           v-for="s in inputs">
+        <label :for="s.name">{{isHun ? s._name : s.eng}}</label>
+        <div class="input-cont">
+          <!-- <div class="axis" v-if="s.type === 'big'">O</div> -->
+          <input :step="s.step"
+                 :min="s.min"
+                 :max="s.max"
+                 type="range"
+                 :name="s.name"
+                 v-model.number="savedVals[s.name]">
+        </div>
       </div>
     </div>
+
+    <button class="big disconnect"
+            @click="disconnect">{{isHun ? 'Kilépés' : 'Disconnnect'}}</button>
 
   </div>
 </template>
@@ -26,6 +36,11 @@ export default {
       inputs: config,
       savedVals: null,
       canvas: null
+    }
+  },
+  computed: {
+    isHun() {
+      return this.$store.state.language === 'HUN'
     }
   },
   watch: {
@@ -47,25 +62,27 @@ export default {
     })
   },
   methods: {
-    disconnect() {
-      this.socket.emit('DISCONNECT')
+    disconnect () {
+      this.$store.dispatch('ask_toDisconnect')
     }
   }
 }
 </script>
 
 <style scoped>
-canvas {
-  width: calc(100% - 20px);
-  height: 200px;
-  background-color: white;
-  border-radius: 5px;
-  margin: 10px;
-  box-sizing: border-box;
-}
 .remote {
   width: 100%;
   max-width: 500px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.disconnect {
+  /* position: absolute;
+  right: 10px;
+  top: 10px; */
 }
 .container {
   width: 100%;
@@ -76,24 +93,35 @@ canvas {
 }
 .config-item {
   text-align: left;
-  padding: 7px 10px;
-  width: 50%;
+  padding: 5px 0px;
+  width: 48%;
+}
+.input-cont {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
+}
+.config-item.big {
+  flex-grow: 1;
+  min-width: 90%;
+}
+.axis {
+  margin-right: 10px;
+}
+.config-item.big label {
+  /* display: none; */
 }
 label {
-  color: white;
+  color: black;
   height: 100%;
   padding: 0px 0 5px 0;
   text-transform: uppercase;
   font-family: helvetica;
-  font-size: 14px;
-}
-.disconnect {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  font-size: 12px;
 }
 input {
-  background-color: black;
+  background-color: white;
 }
 /* http://danielstern.ca/range.css/#/ */
 input[type=range] {
@@ -106,80 +134,81 @@ input[type=range]:focus {
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 10px;
+  height: 5px;
   cursor: pointer;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   background: #f9423a;
   border-radius: 25px;
-  border: 0.3px solid rgba(0, 0, 106, 0);
+  border: 0px solid rgba(1, 1, 1, 0);
 }
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 25px;
-  width: 25px;
-  border-radius: 11px;
-  background: #ffffff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: #f9423a;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -7.8px;
+  margin-top: -7.5px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #fb7b75;
+  background: #fb847f;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
-  height: 10px;
+  height: 5px;
   cursor: pointer;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   background: #f9423a;
   border-radius: 25px;
-  border: 0.3px solid rgba(0, 0, 106, 0);
+  border: 0px solid rgba(1, 1, 1, 0);
 }
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 25px;
-  width: 25px;
-  border-radius: 11px;
-  background: #ffffff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: #f9423a;
   cursor: pointer;
 }
 input[type=range]::-ms-track {
   width: 100%;
-  height: 10px;
+  height: 5px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #ef1107;
-  border: 0.3px solid rgba(0, 0, 106, 0);
+  background: #e51007;
+  border: 0px solid rgba(1, 1, 1, 0);
   border-radius: 50px;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
 }
 input[type=range]::-ms-fill-upper {
   background: #f9423a;
-  border: 0.3px solid rgba(0, 0, 106, 0);
+  border: 0px solid rgba(1, 1, 1, 0);
   border-radius: 50px;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
 }
 input[type=range]::-ms-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 25px;
-  width: 25px;
-  border-radius: 11px;
-  background: #ffffff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: #f9423a;
   cursor: pointer;
-  height: 10px;
+  height: 5px;
 }
 input[type=range]:focus::-ms-fill-lower {
   background: #f9423a;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #fb7b75;
+  background: #fb847f;
 }
+
 
 </style>

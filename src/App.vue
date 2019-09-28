@@ -25,7 +25,6 @@
 html, body, #app {
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
 }
 #app {
   font-family: Aktifo-A-Book;
@@ -34,9 +33,13 @@ html, body, #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
-  background-color: black;
   padding: 16px;
+  /* color: white;
+  background-color: black; */
+  background-color: white;
+  color: black;
+  /* background-image: url('./assets/image.png');
+  background-size: cover; */
 }
 .bold {
   font-family: Aktifo-A-SemiBold;
@@ -62,15 +65,33 @@ button {
 }
 button.big {
   width: 100%;
-  height: 60px;
+  height: 50px;
   border-radius: 5px;
 }
-button.circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+.button.circle, button.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 8px 5px 5px;
+  font-size: 12px;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  background: #f9423a;
+  color: white;
+  text-transform: uppercase;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 h1 {
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 </style>

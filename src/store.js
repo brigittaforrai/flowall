@@ -16,12 +16,15 @@ export default new Vuex.Store({
   state: {
     language: HUN,
     connected: false,
-    open: false,
+    open: true,
     name: null,
     id: null,
     player: null
   },
   mutations: {
+    setLanguage(state, lang) {
+      state.language = lang
+    },
     setUserId(state) {
       let id = localStorage.getItem('flow2019_id')
       if (id) {

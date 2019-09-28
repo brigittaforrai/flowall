@@ -13,8 +13,6 @@ const server = app.listen(port, function(){
 const io = require('socket.io')(server)
 
 
-let open = true
-
 let values = {
   xgap: 100,
   zgap: 100,
@@ -28,35 +26,55 @@ let values = {
   rotatez: 0
 }
 
+let id = null
+let name = null
+let timer = null
+
 io.on('connection', function(socket) {
+
+  socket.on('DISCONNECT', function() {
+    id = null
+    name = null
+    io.emit('CONNECTION_INFO', {
+      name: name,
+      id: id
+    })
+
+    clearTimeout(timer)
+  })
+
+  socket.on('ASK_CONNECTION_INFO', function() {
+    io.emit('CONNECTION_INFO', {
+      name: name,
+      id: id
+    })
+  })
+
+  socket.on('ASK_CONNECT', function(data) {
+    id = data.id
+    name = data.name
+    io.emit('CONNECTION_INFO', {
+      name: name,
+      id: id
+    })
+
+    timer = setTimeout(() => {
+      // todo add counter
+      id = null
+      name = null
+      io.emit('CONNECTION_INFO', {
+        name: name,
+        id: id
+      })
+    }, 60000)
+  })
 
   socket.on('SEND', function(data) {
     values = data.values
     io.emit('VALUES', {values: values})
   })
 
-  socket.on('ISOPEN', function() {
-    io.emit('OPEN', {open: open})
-  })
-
   socket.on('GET_VALUES', function() {
     io.emit('INIT_VALUES', {values: values})
-  })
-
-  socket.on('CONNECTED', function() {
-    if (open) {
-      open = false
-      io.emit('OPEN', {open: open})
-      setTimeout(() => {
-        open = true
-        io.emit('OPEN', {open: open})
-        console.log("time is up");
-      }, 60000)
-    }
-  })
-
-  socket.on('DISCONNECT', function() {
-    open = true
-    io.emit('OPEN', {open: open})
   })
 })

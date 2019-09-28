@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Connect from './components/connect.vue'
-import Project from './components/project.vue'
 import { publicPath } from './../vue.config.js'
+import Home from './components/home.vue'
+import Project from './components/project.vue'
 
 Vue.use(Router)
 
@@ -11,10 +11,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Connect
+      name: 'home',
+      component: Home
     },
     {
       path: `/projection`,
+      name: 'projection',
       component: Project
     }
   ]

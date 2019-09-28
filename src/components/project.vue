@@ -1,6 +1,7 @@
 <template lang="html">
   <div>
     <design-het class="widget" installation="true" circles="3"></design-het>
+    <img class="qr" src="./../assets/design-het-qr.svg" alt="qr code">
   </div>
 </template>
 
@@ -12,7 +13,8 @@ export default {
   data() {
     return {
       socket : io(server),
-      widget: null
+      widget: null,
+
     }
   },
   mounted() {
@@ -47,5 +49,12 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
+}
+.qr {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 100px;
+  height: 100px;
 }
 </style>

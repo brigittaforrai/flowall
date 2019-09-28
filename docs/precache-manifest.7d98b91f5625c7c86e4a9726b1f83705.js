@@ -20,24 +20,24 @@ self.__precacheManifest = [
     "url": "/designhet2019/img/design-het-qr.f83253f2.svg"
   },
   {
-    "revision": "043660c027c316a309dd37c5eac8f4b2",
+    "revision": "3b41a04d0a06d2bcb1692875d825523a",
     "url": "/designhet2019/index.html"
   },
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "url": "/designhet2019/robots.txt"
+    "revision": "7694285ab18311e2b072b8ad2ab6153a",
+    "url": "/designhet2019/webfonts/3A2793_0_0.ttf"
   },
   {
-    "revision": "2596b09da364ccd5e226",
-    "url": "/designhet2019/js/app.333b9098.js"
+    "revision": "befcba130035fb6f3392",
+    "url": "/designhet2019/js/app.2155fed8.js"
   },
   {
     "revision": "bbc0400b0427376f1a4da53467a080cc",
     "url": "/designhet2019/webfonts/3A2793_1_0.eot"
   },
   {
-    "revision": "7694285ab18311e2b072b8ad2ab6153a",
-    "url": "/designhet2019/webfonts/3A2793_0_0.ttf"
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "url": "/designhet2019/robots.txt"
   },
   {
     "revision": "985ed0e2f22328f9b238ef6afa337b11",
@@ -52,8 +52,8 @@ self.__precacheManifest = [
     "url": "/designhet2019/js/chunk-vendors.15469bad.js"
   },
   {
-    "revision": "2596b09da364ccd5e226",
-    "url": "/designhet2019/css/app.12ed241b.css"
+    "revision": "befcba130035fb6f3392",
+    "url": "/designhet2019/css/app.7331fa0e.css"
   },
   {
     "revision": "121dfdb252b8f927042e59f070d707d1",

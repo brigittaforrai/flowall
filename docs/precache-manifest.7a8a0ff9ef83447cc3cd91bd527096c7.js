@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/designhet2019/img/design-het-qr.f83253f2.svg"
   },
   {
-    "revision": "d5efa8992e5ed55ce9237e3e20d50592",
+    "revision": "5277326feef143b20ee8737a299ced97",
     "url": "/designhet2019/index.html"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/designhet2019/robots.txt"
   },
   {
-    "revision": "0b5cf6d6fe37d543749b",
-    "url": "/designhet2019/js/app.9b496ad5.js"
+    "revision": "10cae6b5d4a59530582f",
+    "url": "/designhet2019/js/app.f0093afa.js"
   },
   {
     "revision": "bbc0400b0427376f1a4da53467a080cc",
@@ -40,10 +40,6 @@ self.__precacheManifest = [
     "url": "/designhet2019/webfonts/3A2793_0_0.ttf"
   },
   {
-    "revision": "985ed0e2f22328f9b238ef6afa337b11",
-    "url": "/designhet2019/webfonts/3A2793_0_0.woff2"
-  },
-  {
     "revision": "e873742b0319618caaca",
     "url": "/designhet2019/js/chunk-vendors.15469bad.js"
   },
@@ -52,8 +48,12 @@ self.__precacheManifest = [
     "url": "/designhet2019/webfonts/3A2793_0_0.woff"
   },
   {
-    "revision": "0b5cf6d6fe37d543749b",
-    "url": "/designhet2019/css/app.8263178b.css"
+    "revision": "985ed0e2f22328f9b238ef6afa337b11",
+    "url": "/designhet2019/webfonts/3A2793_0_0.woff2"
+  },
+  {
+    "revision": "10cae6b5d4a59530582f",
+    "url": "/designhet2019/css/app.33e713bc.css"
   },
   {
     "revision": "121dfdb252b8f927042e59f070d707d1",

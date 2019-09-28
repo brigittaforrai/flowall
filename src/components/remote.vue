@@ -7,7 +7,6 @@
            v-for="s in inputs">
         <label :for="s.name">{{isHun ? s._name : s.eng}}</label>
         <div class="input-cont">
-          <!-- <div class="axis" v-if="s.type === 'big'">O</div> -->
           <input :step="s.step"
                  :min="s.min"
                  :max="s.max"

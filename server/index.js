@@ -14,43 +14,21 @@ const io = require('socket.io')(server)
 
 
 let open = true
-let values = [
-  {
-    name: "xgap",
-    value: 100
-  },
-  {
-    name: "zgap",
-    value: 100
-  },
-  {
-    name: "nodesize",
-    value: 30
-  },
-  {
-    name: "spacing",
-    value: 50
-  },
-  {
-    name: "tempo",
-    value: 0.02
-  },
-  {
-    name: "ampl",
-    value: 100
-  },
-  {
-    name: "period",
-    value: 1000
-  }
-]
+
+let values = {
+  xgap: 100,
+  zgap: 100,
+  nodesize: 30,
+  spacing: 50,
+  tempo: 0.02,
+  ampl: 100,
+  period: 1000,
+  rotatex: 0,
+  rotatey: 0,
+  rotatez: 0
+}
 
 io.on('connection', function(socket) {
-
-  socket.on('ROTATE', function(data) {
-    console.log(data, 'rotation');
-    io.emit('SET_ROTATION', data)
-  })
 
   socket.on('SEND', function(data) {
     values = data.values
@@ -66,13 +44,15 @@ io.on('connection', function(socket) {
   })
 
   socket.on('CONNECTED', function() {
-    open = false
-    io.emit('OPEN', {open: open})
-    setTimeout(() => {
-      open = true
+    if (open) {
+      open = false
       io.emit('OPEN', {open: open})
-      console.log("time out");
-    }, 60000)
+      setTimeout(() => {
+        open = true
+        io.emit('OPEN', {open: open})
+        console.log("time is up");
+      }, 60000)
+    }
   })
 
   socket.on('DISCONNECT', function() {

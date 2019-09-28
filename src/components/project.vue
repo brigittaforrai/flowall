@@ -12,8 +12,7 @@ export default {
   data() {
     return {
       socket : io(server),
-      widget: null,
-      vals: null
+      widget: null
     }
   },
   mounted() {
@@ -21,30 +20,21 @@ export default {
 
     // ask config from server
     this.socket.emit('GET_VALUES')
-
     this.socket.on('INIT_VALUES', (data) => {
-      this.vals = data.values
       this.update(data.values)
+      this.socket.off('INIT_VALUES')
     })
 
+    // listen for change
     this.socket.on('VALUES', (data) => {
-        this.vals = data.values
         this.update(data.values)
-    })
-
-    this.socket.on('SET_ROTATION', (data) => {
-        this.rotate(data)
     })
   },
   methods: {
     update(data) {
-      data.forEach((c) => {
-        this.widget.setAttribute(c.name, c.value)
+      Object.keys(data).forEach((name) => {
+        this.widget.setAttribute(name, data[name])
       })
-    },
-    rotate(values) {
-      this.widget.setAttribute('rotatex', values.x)
-      this.widget.setAttribute('rotatey', values.y)
     }
   }
 }

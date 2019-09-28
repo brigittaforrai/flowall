@@ -5,19 +5,19 @@ const config = [
   {
     name: "xgap",
     _name: "pontsűrűség-x",
-    min: 20,
-    max: 500,
+    min: 50,
+    max: 300,
     step: 1,
-    randomMin: 40,
+    randomMin: 50,
     randomMax: 200
   },
   {
     name: "zgap",
     _name: "pontsűrűség-y",
-    min: 20,
-    max: 500,
+    min: 50,
+    max: 300,
     step: 1,
-    randomMin: 40,
+    randomMin: 50,
     randomMax: 200
   },
   {
@@ -65,6 +65,35 @@ const config = [
     step: 1,
     randomMin: 1,
     randomMax: 1000
+  },
+  {
+    name: "rotatex",
+    _name: "x foratas",
+    min: -90,
+    max: 90,
+    step: 1,
+    randomMin: -90,
+    randomMax: 90
+  },
+  {
+    name: "rotatey",
+    _name: "y foratas",
+    default: 0,
+    min: -90,
+    max: 90,
+    step: 1,
+    randomMin: -90,
+    randomMax: 90
+  },
+  {
+    name: "rotatez",
+    _name: "z foratas",
+    default: 0,
+    min: -90,
+    max: 90,
+    step: 1,
+    randomMin: -90,
+    randomMax: 90
   }
 ]
 

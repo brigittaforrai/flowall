@@ -4,14 +4,12 @@
     <button class="circle disconnect"
             @click="disconnect">x</button>
 
-    <div class="container" v-if="mergedConfig">
-      <div class="config-item" :key="s.name" v-for="s in mergedConfig">
+    <div class="container" v-if="inputs && savedVals">
+      <div class="config-item" :key="s.name" v-for="s in inputs">
         <label :for="s.name">{{s._name}}</label>
-        <input :step="s.step" :min="s.min" :max="s.max" type="range" :name="s.name" v-model.number="s.value" @change="send">
+        <input :step="s.step" :min="s.min" :max="s.max" type="range" :name="s.name" v-model.number="savedVals[s.name]">
       </div>
     </div>
-
-    <canvas></canvas>
 
   </div>
 </template>
@@ -25,65 +23,32 @@ export default {
   data() {
     return {
       socket : io(server),
-      attrs: config,
-      vals: null,
+      inputs: config,
+      savedVals: null,
       canvas: null
     }
   },
-  mounted () {
-    // update cfg
-    this.socket.on('INIT_VALUES', (data) => {
-      this.vals = data.values
-    })
-    // ask config from server
-    this.socket.emit('GET_VALUES')
-
-    this.canvas = document.querySelector('canvas')
-    this.addEvents()
-  },
-  computed: {
-    mergedConfig() {
-      if (this.vals) {
-        let r = this.attrs.map((a) => {
-          let item = this.vals.find(f => f.name === a.name)
-          a.value = item.value
-          return a
+  watch: {
+    savedVals: {
+      deep: true,
+      handler(newVals) {
+        this.socket.emit('SEND', {
+          values: newVals
         })
-        return r
-      } else {
-        return []
       }
     }
   },
+  mounted () {
+    // ask config from server
+    this.socket.emit('GET_VALUES')
+    this.socket.on('INIT_VALUES', (data) => {
+      this.socket.off('INIT_VALUES')
+      this.savedVals = data.values
+    })
+  },
   methods: {
-    send() {
-      let result = this.attrs.map(item => ({name: item.name, value: item.value}))
-      this.socket.emit('SEND', {
-        values: result
-      })
-    },
     disconnect() {
-      this.getOrientation()
-      // this.socket.emit('DISCONNECT')
-    },
-    addEvents() {
-      // this.canvas.addEventListener("touchstart", (e) => {
-      // })
-      // this.canvas.addEventListener("touchend", (e) => {
-      // })
-      this.canvas.addEventListener("touchmove", (e) => {
-        let rect = this.canvas.getBoundingClientRect();
-        let t = e.touches[0]
-        let x = t.clientX - rect.left
-        let y = t.clientY - rect.top
-        let xp = (x / rect.width) * 100
-        let yp = (y / rect.height) * 100
-        if (xp > 100 || xp < 0 || yp > 100 || yp < 0) {
-          // todo
-        } else {
-          this.socket.emit('ROTATE', {x: xp, y: yp})
-        }
-      })
+      this.socket.emit('DISCONNECT')
     }
   }
 }

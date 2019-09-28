@@ -72,7 +72,6 @@ export default {
 <style scoped>
 .remote {
   width: 100%;
-  max-width: 500px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -103,8 +102,7 @@ export default {
   align-items: baseline;
 }
 .config-item.big {
-  flex-grow: 1;
-  min-width: 90%;
+  width: 100%;
 }
 .axis {
   margin-right: 10px;

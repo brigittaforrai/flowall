@@ -1,19 +1,16 @@
 <template>
   <div class="remote">
-
-    <div class="container" v-if="inputs && savedVals">
-      <div :class="(s.type === 'big') ? 'big config-item' : 'config-item'"
-           :key="s.name"
-           v-for="s in inputs">
+    <div class="container">
+      <div :key="s.name"
+           v-for="s in inputs"
+           :class="(s.type === 'big') ? 'big config-item' : 'config-item'">
         <label :for="s.name">{{isHun ? s._name : s.eng}}</label>
-        <div class="input-cont">
           <input :step="s.step"
                  :min="s.min"
                  :max="s.max"
                  type="range"
                  :name="s.name"
                  v-model.number="savedVals[s.name]">
-        </div>
       </div>
     </div>
 
@@ -33,8 +30,7 @@ export default {
     return {
       socket : io(server),
       inputs: config,
-      savedVals: null,
-      canvas: null
+      savedVals: {}
     }
   },
   computed: {
@@ -77,11 +73,6 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.disconnect {
-  /* position: absolute;
-  right: 10px;
-  top: 10px; */
-}
 .container {
   width: 100%;
   display: flex;
@@ -94,20 +85,11 @@ export default {
   padding: 5px 0px;
   width: 48%;
 }
-.input-cont {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: baseline;
-}
 .config-item.big {
   width: 100%;
 }
 .axis {
   margin-right: 10px;
-}
-.config-item.big label {
-  /* display: none; */
 }
 label {
   color: black;

@@ -35,18 +35,19 @@ export default {
      padding: 16px;
      left: 0;
      top: 0;
+     z-index: 10;
    }
   .language-selector {
     display: flex;
   }
-  .lang {
+  .button.lang {
     background-color: white;
     color: black;
   }
-  .lang:first-of-type {
+  .button.lang:first-of-type {
     margin-right: 5px;
   }
-  .lang.selected {
+  .button.lang.selected {
     background-color: #f9423a;
     color: white;
     font-weight: bold;

@@ -108,11 +108,12 @@ export default {
 <style scoped>
 .remote {
   width: 100%;
-  flex-grow: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
 .container {
   width: 100%;
@@ -124,26 +125,24 @@ export default {
 .btn-cont {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 .btn-cont button {
-  margin-right: 10px;
+  margin: 0px 10px;
 }
 .config-item {
   text-align: left;
-  padding: 5px 0px;
+  padding: 3px 0px 0px 0px;
   width: 48%;
 }
 .config-item.big {
   width: 100%;
 }
-.axis {
-  margin-right: 10px;
-}
 label {
   color: black;
   height: 100%;
-  padding: 0px 0 5px 0;
   text-transform: uppercase;
   font-family: helvetica;
   font-size: 12px;
@@ -236,6 +235,36 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #fb847f;
+}
+
+@media (orientation: landscape) {
+  .remote {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .container {
+    width: calc(100% - 50px);
+    padding-right: 11px;
+  }
+  .btn-cont {
+    flex-direction: column;
+    width: 50px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .btn-cont button {
+    margin: 0 0 5px 5px;
+  }
+  .config-item {
+    width: 32%;
+  }
+  .config-item.big {
+    width: 49%;
+  }
+  button.big {
+    height: 40px;
+  }
 }
 
 

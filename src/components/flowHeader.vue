@@ -30,7 +30,11 @@ export default {
      align-items: baseline;
      justify-content: space-between;
      width: 100%;
-     margin-bottom: 20px;
+     position: fixed;
+     background-color: white;
+     padding: 16px;
+     left: 0;
+     top: 0;
    }
   .language-selector {
     display: flex;
@@ -46,5 +50,10 @@ export default {
     background-color: #f9423a;
     color: white;
     font-weight: bold;
+  }
+  @media (orientation: landscape) {
+    header {
+      padding: 12px 16px;
+    }
   }
 </style>

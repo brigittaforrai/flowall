@@ -12,12 +12,5 @@ module.exports = {
         options.configFile = path.resolve(__dirname, ".eslintrc.js");
         return options;
     })
-  },
-  pwa: {
-    name: 'flow',
-    themeColor: '#f9423a',
-    msTileColor: '#000000',
-    appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'black',
   }
 }

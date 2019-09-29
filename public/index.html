@@ -25,6 +25,8 @@
     <!-- <meta property="fb:app_id" content="your_app_id" />
     <meta name="twitter:site" content="@website-username"> -->
 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" type="text/css" href="MyFontsWebfontsKit.css">
     <title>the flow</title>
@@ -43,6 +45,18 @@
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
 
     <script>
+      // clear cache
+      if(window.navigator && navigator.serviceWorker) {
+        console.log(1);
+          navigator.serviceWorker.getRegistrations()
+          .then(function(registrations) {
+            console.log(registrations, 2);
+            for(let registration of registrations) {
+              console.log('clear cache');
+              registration.unregister();
+            }
+          });
+        }
       // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyAGbdjv2VLFHeJIXbLlCZ7mNyV3PpgWqpw",

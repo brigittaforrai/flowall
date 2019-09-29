@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+    <flowHeader></flowHeader>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import FlowHeader from './components/flowHeader.vue'
   export default {
     name: 'App',
+    components: {
+      FlowHeader
+    },
     mounted () {
       this.$store.dispatch('ask_connectionInfo')
       this.$store.dispatch('listen_connectionInfo')
@@ -22,6 +27,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  -webkit-text-size-adjust: 100%;
+}
 html, body, #app {
   width: 100%;
   height: 100%;
@@ -34,10 +42,11 @@ html, body, #app {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   padding: 16px;
-  /* color: white;
-  background-color: black; */
   background-color: white;
   color: black;
+  position: relative;
+  /* color: white;
+  background-color: black; */
   /* background-image: url('./assets/image.png');
   background-size: cover; */
 }
@@ -67,6 +76,9 @@ button.big {
   width: 100%;
   height: 50px;
   border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .button.circle, button.circle {
   width: 40px;
@@ -102,5 +114,14 @@ button.empty:active, .button.empty:active {
 }
 h1 {
   font-size: 1.7em;
+}
+
+@media (orientation: landscape) {
+  button.big {
+    height: 40px;
+  }
+  #app {
+    padding: 12px 16px;
+  }
 }
 </style>

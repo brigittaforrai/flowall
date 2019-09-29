@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <flowHeader></flowHeader>
-
     <Remote v-if="this.connected"></Remote>
     <Connect v-if="!this.connected"></Connect>
   </div>
@@ -10,13 +8,12 @@
 <script>
 import Remote from './remote.vue'
 import Connect from './connect.vue'
-import FlowHeader from './flowHeader.vue'
+
 
 export default {
   name: 'Home',
   components: {
     Remote,
-    FlowHeader,
     Connect
   },
   computed: {
@@ -34,11 +31,19 @@ export default {
   .home {
     width: 100%;
     height: 100%;
-    max-height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    /* overflow: hidden; */
+    position: relative;
+    padding-top: 56px;
+    padding-bottom: 66px;
+  }
+
+  @media(orientation: landscape) {
+    .home {
+      padding-top: 52px;
+      padding-bottom: 52px;
+    }
   }
 </style>

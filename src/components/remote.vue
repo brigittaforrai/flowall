@@ -1,31 +1,32 @@
 <template>
   <div class="remote">
-    <div class="container">
-      <div :key="s.name"
-           v-for="s in inputs"
-           :class="(s.type === 'big') ? 'big config-item' : 'config-item'">
-        <label :for="s.name">{{isHun ? s._name : s.eng}}</label>
+
+    <div class="controls">
+      <div class="container">
+        <div :key="s.name"
+             v-for="s in inputs"
+             :class="(s.type === 'big') ? 'big config-item' : 'config-item'">
+          <label :for="s.name">{{isHun ? s._name : s.eng}}</label>
           <input :step="s.step"
                  :min="s.min"
                  :max="s.max"
                  type="range"
                  :name="s.name"
                  v-model.number="savedVals[s.name]">
+        </div>
+      </div>
+
+      <div class="btn-cont">
+        <button class="circle empty"
+                @click="randomSvg">svg</button>
+        <button class="circle empty"
+                @click="random">R</button>
+        <button class="circle"
+                @click="setRed"></button>
+        <!-- <button class="circle empty"
+                @click="getOrientation"></button> -->
       </div>
     </div>
-
-    <div class="btn-cont">
-      <button class="circle empty"
-              @click="randomSvg">svg</button>
-      <button class="circle empty"
-              @click="random">R</button>
-      <button class="circle empty"
-              @click="getOrientation"></button>
-      <button class="circle"
-              @click="setRed"></button>
-    </div>
-
-
 
     <button class="big disconnect"
             @click="disconnect">{{isHun ? 'Kilépés' : 'Disconnnect'}}</button>
@@ -63,8 +64,7 @@ export default {
     }
   },
   mounted () {
-    // ask config from server
-    // todo
+    // ask config from server todo
     this.socket.emit('GET_VALUES')
     this.socket.on('INIT_VALUES', (data) => {
       this.socket.off('INIT_VALUES')
@@ -86,9 +86,6 @@ export default {
       this.savedVals = randoms
       this.randomSvg()
     },
-    getOrientation() {
-      console.log('get orientation todo');
-    },
     setRed() {
       console.log('red todo');
     },
@@ -100,7 +97,35 @@ export default {
         const decimals = step.toString().split('.')[1].length
         return parseFloat(random.toFixed(decimals))
       }
-    }
+    },
+    // getOrientation() {
+    //   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    //       DeviceOrientationEvent.requestPermission().then(permissionState => {
+    //         if (permissionState === 'granted') {
+    //           window.addEventListener('deviceorientation', (e) => {
+    //             console.log(e);
+    //           });
+    //         }
+    //       }).catch(console.error);
+    //   } else {
+    //     window.addEventListener('deviceorientation', (e) => {
+    //       console.log(e);
+    //     });
+    //   }
+    //   if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    //     DeviceMotionEvent.requestPermission().then(permissionState => {
+    //         if (permissionState === 'granted') {
+    //           window.addEventListener('devicemotion', (e) => {
+    //             console.log(e);
+    //           });
+    //         }
+    //       }).catch(console.error);
+    //   } else {
+    //     window.addEventListener('deviceomotion', (e) => {
+    //       console.log(e);
+    //     });
+    //   }
+    // },
   }
 }
 </script>
@@ -108,8 +133,12 @@ export default {
 <style scoped>
 .remote {
   width: 100%;
-  height: 100%;
-  overflow-y: scroll;
+  min-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: auto;
+  padding: 16px;
 }
 .container {
   width: 100%;
@@ -117,6 +146,12 @@ export default {
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.controls {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .btn-cont {
   width: 100%;
@@ -167,13 +202,13 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   border-radius: 50px;
   background: #f9423a;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -7.5px;
+  margin-top: -10px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #fb847f;
@@ -190,8 +225,8 @@ input[type=range]::-moz-range-track {
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   border-radius: 50px;
   background: #f9423a;
   cursor: pointer;
@@ -219,8 +254,8 @@ input[type=range]::-ms-fill-upper {
 input[type=range]::-ms-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   border: 0px solid rgba(0, 0, 0, 0);
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   border-radius: 50px;
   background: #f9423a;
   cursor: pointer;
@@ -234,11 +269,9 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 @media (orientation: landscape) {
-  .remote {
-    display: flex;
+  .controls {
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
   }
   .container {
     width: calc(100% - 50px);
@@ -248,7 +281,7 @@ input[type=range]:focus::-ms-fill-upper {
     flex-direction: column;
     width: 50px;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 25px;
     margin-bottom: 0;
   }
   .btn-cont button {
@@ -259,9 +292,6 @@ input[type=range]:focus::-ms-fill-upper {
   }
   .config-item.big {
     width: 49%;
-  }
-  button.big {
-    height: 40px;
   }
 }
 

@@ -8,6 +8,7 @@
 <script>
 import io from 'socket.io-client'
 import {server} from './../config.js'
+import { DesignHet } from 'design-het-widget'
 
 export default {
   data() {

@@ -27,15 +27,15 @@ export default {
 <style scoped>
    header {
      display: flex;
-     align-items: baseline;
+     align-items: center;
      justify-content: space-between;
      width: 100%;
      position: fixed;
      background-color: white;
-     padding: 16px;
      left: 0;
      top: 0;
      z-index: 10;
+     padding: 16px;
    }
   .language-selector {
     display: flex;
@@ -51,10 +51,5 @@ export default {
     background-color: #f9423a;
     color: white;
     font-weight: bold;
-  }
-  @media (orientation: landscape) {
-    header {
-      padding: 12px 16px;
-    }
   }
 </style>

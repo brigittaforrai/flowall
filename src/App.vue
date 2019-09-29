@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <flowHeader></flowHeader>
     <router-view/>
   </div>
 </template>
 
 <script>
-  import FlowHeader from './components/flowHeader.vue'
   export default {
     name: 'App',
-    components: {
-      FlowHeader
-    },
     mounted () {
       this.$store.dispatch('ask_connectionInfo')
       this.$store.dispatch('listen_connectionInfo')
@@ -41,7 +36,6 @@ html, body, #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  padding: 16px;
   background-color: white;
   color: black;
   position: relative;
@@ -72,9 +66,7 @@ button.big {
   width: 100%;
   height: 50px;
   border-radius: 5px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  margin-top: 16px;
 }
 .button.circle, button.circle {
   width: 40px;
@@ -113,11 +105,8 @@ h1 {
 }
 
 @media (orientation: landscape) {
-  button.big {
-    height: 40px;
-  }
   #app {
-    padding: 12px 16px;
+
   }
 }
 </style>

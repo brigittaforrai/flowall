@@ -44,12 +44,19 @@ export default {
 <style scoped>
   .connect {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
-    overflow-y: scroll;
+    padding: 16px;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
   }
   h2 {
     font-size: 2.3em;

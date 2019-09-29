@@ -51,7 +51,7 @@ const config = [
   },
   {
     name: "xgap",
-    _name: "pontsűrűség-x",
+    _name: "ponttávolság-x",
     min: 50,
     max: 500,
     step: 1,
@@ -61,7 +61,7 @@ const config = [
   },
   {
     name: "zgap",
-    _name: "pontsűrűség-y",
+    _name: "ponttávolság-y",
     min: 50,
     max: 500,
     step: 1,

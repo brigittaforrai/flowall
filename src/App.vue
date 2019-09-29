@@ -45,10 +45,6 @@ html, body, #app {
   background-color: white;
   color: black;
   position: relative;
-  /* color: white;
-  background-color: black; */
-  /* background-image: url('./assets/image.png');
-  background-size: cover; */
 }
 .bold {
   font-family: Aktifo-A-SemiBold;

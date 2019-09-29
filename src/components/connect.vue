@@ -56,6 +56,4 @@ export default {
     margin: 10px 0;
     line-height: 1em;
   }
-  @media(orientation: landscape) {
-  }
 </style>

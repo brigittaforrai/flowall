@@ -108,9 +108,9 @@ button.empty, .button.empty {
   color: #f9423a;
   border: 2px solid #f9423a;
 }
-button.empty:active, .button.empty:active, button.empty:hover, .button.empty:hover {
-  background-color: #f9423a;
-  color: white;
+button.empty:active {
+  background-color: #f9423a !important;
+  color: white !important;
 }
 h1 {
   font-size: 1.7em;

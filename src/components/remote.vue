@@ -20,7 +20,7 @@
       <button class="circle empty"
               @click="random">R</button>
       <button class="circle empty"
-              @click="getOrientation">O</button>
+              @click="getOrientation">↻</button>
       <button class="circle"
               @click="setRed"></button>
     </div>
@@ -124,7 +124,10 @@ export default {
 .btn-cont {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+.btn-cont button {
+  margin-right: 10px;
 }
 .config-item {
   text-align: left;

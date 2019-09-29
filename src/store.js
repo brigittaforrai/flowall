@@ -3,18 +3,14 @@ import Vuex from 'vuex'
 import uuid from 'uuid'
 import io from 'socket.io-client'
 import {server} from './config.js'
-import router from './router'
 
 Vue.use(Vuex)
 
 const socket = io(server)
 
-const HUN = 'HUN'
-const ENG = 'ENG'
-
 export default new Vuex.Store({
   state: {
-    language: HUN,
+    language: 'HUN',
     connected: false,
     open: true,
     name: null,

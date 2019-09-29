@@ -235,8 +235,10 @@ input[type=range]:focus::-ms-fill-upper {
 
 @media (orientation: landscape) {
   .remote {
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
   }
   .container {
     width: calc(100% - 50px);

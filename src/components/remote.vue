@@ -20,7 +20,7 @@
       <button class="circle empty"
               @click="random">R</button>
       <button class="circle empty"
-              @click="getOrientation">↻</button>
+              @click="getOrientation"></button>
       <button class="circle"
               @click="setRed"></button>
     </div>

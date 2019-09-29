@@ -14,6 +14,11 @@
       </div>
     </div>
 
+    <button class="circle"
+            @click="randomSvg">svg</button>
+    <button class="circle"
+            @click="random">R</button>
+
     <button class="big disconnect"
             @click="disconnect">{{isHun ? 'Kilépés' : 'Disconnnect'}}</button>
 
@@ -30,7 +35,8 @@ export default {
     return {
       socket : io(server),
       inputs: config,
-      savedVals: {}
+      savedVals: {},
+      widget: null
     }
   },
   computed: {
@@ -50,6 +56,7 @@ export default {
   },
   mounted () {
     // ask config from server
+    // todo
     this.socket.emit('GET_VALUES')
     this.socket.on('INIT_VALUES', (data) => {
       this.socket.off('INIT_VALUES')
@@ -59,6 +66,26 @@ export default {
   methods: {
     disconnect () {
       this.$store.dispatch('ask_toDisconnect')
+    },
+    randomSvg() {
+      this.$store.dispatch('ask_randomCircles')
+    },
+    random() {
+      let randoms = {}
+      this.inputs.forEach((i) => {
+        randoms[i.name] = this.getRandom(i.randomMin, i.randomMax, i.step)
+      })
+      this.savedVals = randoms
+      this.randomSvg()
+    },
+    getRandom(min, max, step) {
+      const random = Math.random() * (max-min) + min
+      if (step === 1 || step === undefined) {
+        return Math.round(random)
+      } else {
+        const decimals = step.toString().split('.')[1].length
+        return parseFloat(random.toFixed(decimals))
+      }
     }
   }
 }

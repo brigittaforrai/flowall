@@ -69,6 +69,10 @@ io.on('connection', function(socket) {
     }, 60000)
   })
 
+  socket.on('ASK_RANDOM_CIRCLES', function() {
+    io.emit('SET_RANDOM_CIRCLES')
+  })
+
   socket.on('SEND', function(data) {
     values = data.values
     io.emit('VALUES', {values: values})

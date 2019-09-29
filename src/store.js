@@ -15,7 +15,8 @@ export default new Vuex.Store({
     open: true,
     name: null,
     id: null,
-    player: null
+    player: null,
+    randomCircles: false
   },
   mutations: {
     setLanguage(state, lang) {
@@ -44,6 +45,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    ask_randomCircles() {
+      console.log('store ask');
+      socket.emit('ASK_RANDOM_CIRCLES')
+    },
     ask_connectionInfo() {
       socket.emit('ASK_CONNECTION_INFO')
     },

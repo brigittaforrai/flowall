@@ -31,6 +31,10 @@ export default {
     this.socket.on('VALUES', (data) => {
         this.update(data.values)
     })
+
+    this.socket.on('SET_RANDOM_CIRCLES', () => {
+      this.widget.updateSvg()
+    })
   },
   methods: {
     update(data) {

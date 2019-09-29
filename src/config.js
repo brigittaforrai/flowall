@@ -7,10 +7,10 @@ const config = [
     _name: "tempó",
     default: 0,
     min: 0,
-    max: 1,
-    step: 0.001,
-    randomMin: 0.02,
-    randomMax: 0.3,
+    max: 0.8,
+    step: 0.0005,
+    randomMin: 0.001,
+    randomMax: 0.2,
     type: 'big',
     eng: "tempo"
   },
@@ -20,8 +20,8 @@ const config = [
     min: -90,
     max: 90,
     step: 1,
-    randomMin: -90,
-    randomMax: 90,
+    randomMin: -60,
+    randomMax: 60,
     type: 'big',
     eng: "rotation X"
   },
@@ -32,8 +32,8 @@ const config = [
     min: -90,
     max: 90,
     step: 1,
-    randomMin: -90,
-    randomMax: 90,
+    randomMin: -60,
+    randomMax: 60,
     type: 'big',
     eng: "rotation Y"
   },
@@ -44,8 +44,8 @@ const config = [
     min: -90,
     max: 90,
     step: 1,
-    randomMin: -90,
-    randomMax: 90,
+    randomMin: -60,
+    randomMax: 60,
     type: 'big',
     eng: "rotation Z"
   },
@@ -56,7 +56,7 @@ const config = [
     max: 500,
     step: 1,
     randomMin: 50,
-    randomMax: 200,
+    randomMax: 100,
     eng: "x gap"
   },
   {
@@ -66,17 +66,17 @@ const config = [
     max: 500,
     step: 1,
     randomMin: 50,
-    randomMax: 200,
+    randomMax: 100,
     eng: "y gap"
   },
   {
     name: "nodesize",
     _name: "méret",
-    min: 1,
+    min: 2,
     max: 100,
     step: 1,
     randomMin: 5,
-    randomMax: 50,
+    randomMax: 30,
     eng: "node size"
   },
   {
@@ -85,7 +85,7 @@ const config = [
     min: 0,
     max: 200,
     step: 1,
-    randomMin: 50,
+    randomMin: 1,
     randomMax: 200,
     eng: "amplitude"
   },
@@ -106,7 +106,7 @@ const config = [
     max: 5000,
     step: 1,
     randomMin: 1,
-    randomMax: 1000,
+    randomMax: 5000,
     eng: "period"
   }
 ]

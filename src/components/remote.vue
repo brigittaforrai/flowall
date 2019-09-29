@@ -14,10 +14,18 @@
       </div>
     </div>
 
-    <button class="circle"
-            @click="randomSvg">svg</button>
-    <button class="circle"
-            @click="random">R</button>
+    <div class="btn-cont">
+      <button class="circle empty"
+              @click="randomSvg">svg</button>
+      <button class="circle empty"
+              @click="random">R</button>
+      <button class="circle empty"
+              @click="getOrientation">O</button>
+      <button class="circle"
+              @click="setRed"></button>
+    </div>
+
+
 
     <button class="big disconnect"
             @click="disconnect">{{isHun ? 'Kilépés' : 'Disconnnect'}}</button>
@@ -78,6 +86,12 @@ export default {
       this.savedVals = randoms
       this.randomSvg()
     },
+    getOrientation() {
+      console.log('get orientation todo');
+    },
+    setRed() {
+      console.log('red todo');
+    },
     getRandom(min, max, step) {
       const random = Math.random() * (max-min) + min
       if (step === 1 || step === undefined) {
@@ -106,6 +120,11 @@ export default {
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.btn-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .config-item {
   text-align: left;

@@ -46,7 +46,6 @@ export default new Vuex.Store({
   },
   actions: {
     ask_randomCircles() {
-      console.log('store ask');
       socket.emit('ASK_RANDOM_CIRCLES')
     },
     ask_connectionInfo() {

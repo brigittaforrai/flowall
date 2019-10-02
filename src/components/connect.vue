@@ -1,10 +1,15 @@
 <template>
   <div class="connect">
     <section>
-      <h3>Lumen café 10.11</h3>
-      <p>A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.</p>
-      <p>Próbáld ki te is, nyomd meg a gombot és játsz a csúszkákkal!</p>
+      <h3>2019. 10. 4-13.</h3>
+      <p>
+        Próbáld ki te is a flow élményt!
+        <br>
+        Nyomd meg a gombot és játsz a csúszkákkal. Változtasd kedvedre az összes paramétert!
+      </p>
     </section>
+
+    <input name="name" v-model="name" type="text" placeholder="Add meg a beceneved"/>
     <button @click="connect"
             class="big"
             v-if="connectBtnText"
@@ -15,6 +20,11 @@
 <script>
 export default {
   name: 'Connect',
+  data: function () {
+    return {
+      name: this.$store.state.name
+    }
+  },
   computed: {
     open() {
       return this.$store.state.open
@@ -33,6 +43,7 @@ export default {
   },
   methods: {
     connect () {
+      this.$store.commit('setUserName', this.name)
       this.$store.dispatch('ask_toConnect')
     }
   }
@@ -60,5 +71,21 @@ export default {
     font-size: 2.3em;
     margin: 10px 0;
     line-height: 1em;
+  }
+  input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border: 1px solid black;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 16px;
+    padding: 16px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    outline: none;
+  }
+  input:focus {
+    border: 2px solid #f9423a;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <header class="bold">
-    <h1 class="logo" @click="toggleInfo">flow</h1>
+    <img class="logo" src="./../assets/flowall-logo.png" @click="toggleInfo" alt="logo"></img>
     <div class="language-selector">
       <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang button circle' : 'lang button circle'">HUN</div>
       <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang button circle' : 'lang button circle'">ENG</div>
@@ -43,6 +43,8 @@ export default {
    }
    .logo {
      cursor: pointer;
+     width: 130px;
+     margin-left: -16px;
    }
   .language-selector {
     display: flex;

@@ -2,7 +2,7 @@
   <div>
     <design-het class="widget" installation="true" circles="3"></design-het>
     <img class="qr" :src="qrCode" alt="qr code">
-    <p class="player"><span>{{player}}</span> is playing.</p>
+    <p v-if="connectedPlayer" class="player"><span>{{player}}</span> is playing.</p>
   </div>
 </template>
 
@@ -42,6 +42,9 @@ export default {
     })
   },
   computed: {
+    connectedPlayer() {
+      return this.$store.state.hasPlayer
+    },
     qrCode() {
       if (this.domain === 'brigittaforrai.com') {
         return brigiQr
@@ -50,7 +53,7 @@ export default {
       }
     },
     player() {
-      return this.$store.state.name || 'someone'
+      return this.$store.state.player || 'someone'
     }
   },
   methods: {

@@ -1,10 +1,21 @@
 <template>
   <div class="info">
-    A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+    <p><span>Deisgner</span>Balogh Balázs</p>
+    <p><span>creative coder</span>Forrai Brigitta</p>
 
-Próbáld ki te is, nyomd meg a gombot és játsz a csúszkákkal!
-    <button class="circle close"
-            @click="closeInfo">X</button>
+    <section>
+      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+    </section>
+    <section>
+      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+    </section>
+
+    <p class="highlight">
+      Próbáld ki te is!<br>Nyomd meg a gombot a főoldalon és játsz a csúszkákkal!
+    </p>
+
+    <button class="close big"
+            @click="closeInfo">ok</button>
   </div>
 </template>
 
@@ -40,8 +51,22 @@ export default {
     top: 72px;
     padding: 16px;
     background-color: white;
-    text-align: center;
+    text-align: left;
+    line-height: 1.5;
+  }
+  span {
+    color: #f9423a;
+    margin-right: 10px;
+    text-transform: capitalize;
   }
   button.close {
+
+  }
+  section {
+    margin: 24px 0;
+  }
+  .highlight {
+    color: #f9423a;
+    font-weight: bold;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <header class="bold">
-    <h1>flow</h1>
+    <h1 class="logo" @click="toggleInfo">flow</h1>
     <div class="language-selector">
       <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang button circle' : 'lang button circle'">HUN</div>
       <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang button circle' : 'lang button circle'">ENG</div>
@@ -19,6 +19,10 @@ export default {
   methods: {
     select(lang) {
       this.$store.commit('setLanguage', lang)
+    },
+    toggleInfo() {
+      this.$store.commit('toggleInfo')
+      console.log(this.$store.state.showInfo);
     }
   }
 }
@@ -36,6 +40,9 @@ export default {
      top: 0;
      z-index: 10;
      padding: 16px;
+   }
+   .logo {
+     cursor: pointer;
    }
   .language-selector {
     display: flex;

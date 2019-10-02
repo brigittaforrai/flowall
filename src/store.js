@@ -16,9 +16,16 @@ export default new Vuex.Store({
     name: null,
     id: null,
     player: null,
-    randomCircles: false
+    randomCircles: false,
+    showInfo: false
   },
   mutations: {
+    toggleInfo(state) {
+      state.showInfo = !state.showInfo
+    },
+    closeInfo(state) {
+      state.showInfo = false
+    },
     setLanguage(state, lang) {
       state.language = lang
     },

@@ -4,6 +4,7 @@
     <div style="height: 100%;">
       <Remote v-if="this.connected"></Remote>
       <Connect v-if="!this.connected"></Connect>
+      <Info v-if="this.showInfo"></Info>
     </div>
   </div>
 </template>
@@ -12,13 +13,15 @@
 import Remote from './remote.vue'
 import Connect from './connect.vue'
 import FlowHeader from './flowHeader.vue'
+import Info from './info.vue'
 
 export default {
   name: 'Home',
   components: {
     Remote,
     Connect,
-    FlowHeader
+    FlowHeader,
+    Info
   },
   computed: {
     connected() {
@@ -26,6 +29,9 @@ export default {
     },
     playerName() {
       return this.$store.state.player
+    },
+    showInfo() {
+      return this.$store.state.showInfo
     }
   }
 }

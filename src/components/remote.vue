@@ -263,7 +263,7 @@ input[type=range]:focus::-ms-fill-upper {
   background: #fb847f;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (max-height: 767px) {
   .controls {
     flex-direction: row;
     align-items: center;

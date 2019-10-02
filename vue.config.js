@@ -2,10 +2,7 @@ const path = require('path')
 
 let publicP
 
-// todo .env
-// const domain = 'brigittaforrai.com'
-const domain = 'flowall.space'
-
+const domain = process.env.VUE_APP_URL
 const production = process.env.NODE_ENV === "production"
 
 

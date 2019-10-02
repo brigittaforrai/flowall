@@ -20,7 +20,8 @@
     </section>
 
     <section v-if="lang === 'ENG'">
-      Experience flow through Design Week's generative identity.
+      Matching Design Week Budapest's "flow" theme a generative identity structure was created based on motion and interaction with all of its parameters.
+      The playfulness accompanied with the slowly and continuously changing motion gives the viewers the opoortunity to experience the "flow.
     </section>
 
     <div v-if="lang === 'HUN'">
@@ -42,17 +43,6 @@
 <script>
 export default {
   name: 'Info',
-  mounted () {
-    let btn = document.querySelector('button.circle')
-    btn.addEventListener('touchstart', () => {
-      btn.style.backgroundColor = "white"
-      btn.style.color = "#f9423a"
-    })
-    btn.addEventListener('touchend', () => {
-      btn.style.backgroundColor = "#f9423a"
-      btn.style.color = "white"
-    })
-  },
   methods: {
     closeInfo () {
       this.$store.commit("closeInfo")

@@ -43,5 +43,8 @@ export default {
     height: 100%;
     padding-top: 64px;
     overflow: auto;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

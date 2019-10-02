@@ -14,10 +14,10 @@
       <div v-if="lang === 'ENG'">
         <h3>Experience the flow state!</h3>
         <p>
-          Tap on the red button and control the installation with your phone.
+          Tap on the red button and control the projected image with your phone.
         </p>
         <p style="margin-top: 8px;">
-          Use the sliders to change the view, along with the visual identity of Design Week Budapest.
+          Use the sliders to change the view and the visual identity of Design Week Budapest.
         </p>
       </div>
 
@@ -110,8 +110,10 @@ export default {
     font-size: 0.8em;
     margin: 16px auto;
     border-radius: 0;
+    -webkit-tap-highlight-color: transparent;
   }
   input:focus {
     border-bottom: 2px solid #f9423a;
+    -webkit-tap-highlight-color: transparent;
   }
 </style>

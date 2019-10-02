@@ -7,10 +7,10 @@
 </template>
 
 <script>
+/* eslint-disable */
 import io from 'socket.io-client'
 import {server} from './../config.js'
 import { DesignHet } from 'design-het-widget'
-import {domain} from './../config'
 import flowallQr from './../assets/flowall_qr.png'
 import brigiQr from './../assets/design-het-qr.svg'
 
@@ -18,8 +18,7 @@ export default {
   data() {
     return {
       socket : io(server),
-      widget: null,
-      domain: domain
+      widget: null
     }
   },
   mounted() {
@@ -46,7 +45,7 @@ export default {
       return this.$store.state.hasPlayer
     },
     qrCode() {
-      if (this.domain === 'brigittaforrai.com') {
+      if (process.env.VUE_APP_URL === 'brigittaforrai.com') {
         return brigiQr
       } else {
         return flowallQr

@@ -1,22 +1,31 @@
 <template>
   <div class="connect">
     <section>
-      <h3>Próbáld ki te is a flow élményt!</h3>
-      <p>
-        Hogyan? A piros gombra nyomva egy percig irányíthatod mobilodról az installációt.
-      </p>
-      <p>
-        Változtasd kedvedre a paramétereket és a Design Hét arculatát.
-      </p>
+      <div v-if="lang === 'HUN'">
+        <h3>Próbáld ki te is a flow élményt!</h3>
+        <p>
+          Hogyan? A piros gombra nyomva egy percig irányíthatod mobilodról az installációt.
+        </p>
+        <p>
+          Változtasd kedvedre a paramétereket és a Design Hét arculatát.
+        </p>
+      </div>
 
-      <p class="link" @click="showInfo">Projektről bővebben ></p>
+      <div v-if="lang === 'ENG'">
+        <h3>Experience the flow state!</h3>
+        <p>
+          Tap on the red button and control the installation with your phone.
+        </p>
+        <p style="margin-top: 8px;">
+          Use the sliders to change the view, along with the visual identity of Design Week Budapest.
+        </p>
+      </div>
+
+
+      <p class="link" @click="showInfo">{{lang === 'HUN' ? 'Projektről bővebben >' : 'About the project >'}}</p>
     </section>
 
-    <!-- <p style="margin-top: 16px;">
-      Add meg a beceneved, ha szeretnéd, hogy megjelenjen a kijelzőn!
-    </p> -->
-
-    <input name="name" v-model="name" type="text" placeholder="Add meg a beceneved"/>
+    <input name="name" v-model="name" type="text" :placeholder="lang === 'HUN' ? 'Add meg a beceneved' : 'Your nickname'"/>
 
 
     <button @click="connect"
@@ -42,7 +51,7 @@ export default {
       if (this.lang === 'HUN') {
         return this.open ? "Játszani akarok!" : "Valaki éppen játszik"
       } else {
-        return this.open ? "Let's play a minute!" : "Someone is playing"
+        return this.open ? "Let's play!" : "Someone is playing"
       }
 
     },

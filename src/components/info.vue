@@ -2,26 +2,42 @@
   <div class="info">
     <h1>
       <span>Deisgner</span>
-      Balogh Balázs
+      {{lang === 'HUN' ? 'Balogh Balázs' : 'Balázs Balogh'}}
       <br>
       <a class="link black" href="http://studio.thatsit.hu/" target="about_blank">studio.thasit.hu</a>
     </h1>
     <h1>
       <span>creative coder</span>
-      Forrai Brigitta
+      {{lang === 'HUN' ? 'Forrai Brigitta' : 'Brigitta Forrai'}}
       <br>
       <a class="link black" href="https://brigittaforrai.com" target="about_blank">brigittaforrai.com</a>
     </h1>
 
-    <section>
-      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+    <section v-if="lang === 'HUN'">
+      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született,
+      mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere.
+      Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
     </section>
 
-    <p><span style="color: black">Megtekinthető:</span> 2019. 10. 4-13.</p>
-    <p><span style="color: black">Helyszín:</span> Lumen Café</p>
+    <section v-if="lang === 'ENG'">
+      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született,
+      mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere.
+      Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+    </section>
+
+    <div v-if="lang === 'HUN'">
+      <p><span style="color: black">Megtekinthető:</span> 2019. 10. 4-13.</p>
+      <p><span style="color: black">Helyszín:</span> Lumen Café</p>
+    </div>
+
+    <div v-if="lang === 'ENG'">
+      <p><span style="color: black">Exibition dates:</span> 2019. 10. 4-13.</p>
+      <p><span style="color: black">Location:</span> Lumen Café</p>
+    </div>
 
 
-    <p class="link" @click="closeInfo" >< Vissza</p>
+
+    <p class="link" @click="closeInfo" >{{lang === 'HUN' ? '< Vissza' : '< Back'}}</p>
   </div>
 </template>
 
@@ -42,6 +58,11 @@ export default {
   methods: {
     closeInfo () {
       this.$store.commit("closeInfo")
+    }
+  },
+  computed: {
+    lang() {
+      return this.$store.state.language
     }
   }
 }

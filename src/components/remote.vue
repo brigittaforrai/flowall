@@ -21,10 +21,8 @@
                 @click="randomSvg">svg</button>
         <button class="circle empty"
                 @click="random">R</button>
-        <button class="circle"
-                @click="setRed"></button>
-        <!-- <button class="circle empty"
-                @click="getOrientation"></button> -->
+        <!-- <button class="circle"
+                @click="setRed"></button> -->
       </div>
     </div>
 
@@ -69,6 +67,17 @@ export default {
     this.socket.on('INIT_VALUES', (data) => {
       this.socket.off('INIT_VALUES')
       this.savedVals = data.values
+    })
+
+    let btns = document.querySelectorAll('button.circle.empty').forEach((btn) => {
+      btn.addEventListener('touchstart', () => {
+        btn.style.backgroundColor = "#f9423a"
+        btn.style.color = "white"
+      })
+      btn.addEventListener('touchend', () => {
+        btn.style.backgroundColor = "white"
+        btn.style.color = "#f9423a"
+      })
     })
   },
   methods: {

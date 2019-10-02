@@ -17,10 +17,10 @@
       </div>
 
       <div class="btn-cont">
-        <button class="circle empty"
-                @click="randomSvg">svg</button>
-        <button class="circle empty"
-                @click="random">R</button>
+        <button class="circle random-circle"
+                @click="randomSvg"></button>
+        <button class="circle random"
+                @click="random"></button>
         <!-- <button class="circle"
                 @click="setRed"></button> -->
       </div>
@@ -69,7 +69,8 @@ export default {
       this.savedVals = data.values
     })
 
-    let btns = document.querySelectorAll('button.circle.empty').forEach((btn) => {
+    // TODO
+    let btns = document.querySelectorAll('button.circle').forEach((btn) => {
       btn.addEventListener('touchstart', () => {
         btn.style.backgroundColor = "#f9423a"
         btn.style.color = "white"
@@ -171,6 +172,12 @@ export default {
 }
 .btn-cont button {
   margin: 0px 10px;
+}
+button.random-circle {
+  background-image: url('./../assets/randomcircle.svg')
+}
+button.random {
+  background-image: url('./../assets/random.svg')
 }
 .config-item {
   text-align: left;

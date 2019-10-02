@@ -1,6 +1,8 @@
 <template>
   <div class="info">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+
+Próbáld ki te is, nyomd meg a gombot és játsz a csúszkákkal!
     <button class="circle close"
             @click="closeInfo">X</button>
   </div>
@@ -10,7 +12,7 @@
 export default {
   name: 'Info',
   mounted () {
-    let btn = document.querySelector('button.circle.empty')
+    let btn = document.querySelector('button.circle')
     btn.addEventListener('touchstart', () => {
       btn.style.backgroundColor = "white"
       btn.style.color = "#f9423a"

@@ -1,11 +1,9 @@
 <template>
   <div class="connect">
     <section>
-      <h2 class="">save the date</h2>
-      <h2>10.04-13 </h2>
-
-      <h4>Lumen café 10.11</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Lumen café 10.11</h3>
+      <p>A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.</p>
+      <p>Próbáld ki te is, nyomd meg a gombot és játsz a csúszkákkal!</p>
     </section>
     <button @click="connect"
             class="big"

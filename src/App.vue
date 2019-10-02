@@ -91,14 +91,8 @@ button.big {
   -ms-user-select: none;
   user-select: none;
 }
-button.empty, .button.empty {
-  background-color: white;
-  color: #f9423a;
-  border: 2px solid #f9423a;
-}
-button.empty:active {
+button.random-circle:active {
   background-color: #f9423a !important;
-  color: white !important;
 }
 h1 {
   font-size: 1.7em;

@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy:heroku": "git subtree push --prefix server heroku master"
+    "deploy:heroku": "git subtree push --prefix server heroku master",
+    "ghpages": "git subtree push --prefix docs origin gh-pages"
   },
   "dependencies": {
     "core-js": "^2.6.5",

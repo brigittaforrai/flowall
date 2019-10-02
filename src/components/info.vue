@@ -1,21 +1,27 @@
 <template>
   <div class="info">
-    <p><span>Deisgner</span>Balogh Balázs</p>
-    <p><span>creative coder</span>Forrai Brigitta</p>
+    <h1>
+      <span>Deisgner</span>
+      Balogh Balázs
+      <br>
+      <a class="link black" href="http://studio.thatsit.hu/" target="about_blank">studio.thasit.hu</a>
+    </h1>
+    <h1>
+      <span>creative coder</span>
+      Forrai Brigitta
+      <br>
+      <a class="link black" href="https://brigittaforrai.com" target="about_blank">brigittaforrai.com</a>
+    </h1>
 
     <section>
       A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
     </section>
-    <section>
-      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született, mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere. Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
-    </section>
 
-    <p class="highlight">
-      Próbáld ki te is!<br>Nyomd meg a gombot a főoldalon és játsz a csúszkákkal!
-    </p>
+    <p><span style="color: black">Megtekinthető:</span> 2019. 10. 4-13.</p>
+    <p><span style="color: black">Helyszín:</span> Lumen Café</p>
 
-    <button class="close big"
-            @click="closeInfo">ok</button>
+
+    <p class="link" @click="closeInfo" >< Vissza</p>
   </div>
 </template>
 
@@ -54,16 +60,19 @@ export default {
     text-align: left;
     line-height: 1.5;
   }
+  h1 {
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: normal;
+  }
   span {
     color: #f9423a;
     margin-right: 10px;
     text-transform: capitalize;
-  }
-  button.close {
-
+    font-weight: bold;
   }
   section {
-    margin: 24px 0;
+    margin: 12px 0 24px 0;
   }
   .highlight {
     color: #f9423a;

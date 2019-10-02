@@ -98,6 +98,21 @@ h1 {
   font-size: 1.7em;
 }
 
+.link {
+  font-size: 0.8em;
+  color: #f9423a;
+  margin-top: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.link.black {
+  color: black;
+  text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
 @media (orientation: landscape) {
   #app {
 

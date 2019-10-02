@@ -22,7 +22,6 @@ export default {
     },
     toggleInfo() {
       this.$store.commit('toggleInfo')
-      console.log(this.$store.state.showInfo);
     }
   }
 }

@@ -1,15 +1,24 @@
 <template>
   <div class="connect">
     <section>
-      <h3>2019. 10. 4-13.</h3>
+      <h3>Próbáld ki te is a flow élményt!</h3>
       <p>
-        Próbáld ki te is a flow élményt!
-        <br>
-        Nyomd meg a gombot és játsz a csúszkákkal. Változtasd kedvedre az összes paramétert!
+        Hogyan? A piros gombra nyomva egy percig irányíthatod mobilodról az installációt.
       </p>
+      <p>
+        Változtasd kedvedre a paramétereket és a Design Hét arculatát.
+      </p>
+
+      <p class="link" @click="showInfo">Projektről bővebben ></p>
     </section>
 
+    <!-- <p style="margin-top: 16px;">
+      Add meg a beceneved, ha szeretnéd, hogy megjelenjen a kijelzőn!
+    </p> -->
+
     <input name="name" v-model="name" type="text" placeholder="Add meg a beceneved"/>
+
+
     <button @click="connect"
             class="big"
             v-if="connectBtnText"
@@ -42,9 +51,12 @@ export default {
     }
   },
   methods: {
-    connect () {
+    connect() {
       this.$store.commit('setUserName', this.name)
       this.$store.dispatch('ask_toConnect')
+    },
+    showInfo() {
+      this.$store.commit('toggleInfo')
     }
   }
 }
@@ -67,25 +79,30 @@ export default {
     justify-content: center;
     flex-grow: 1;
   }
-  h2 {
-    font-size: 2.3em;
-    margin: 10px 0;
-    line-height: 1em;
+  h3 {
+    font-size: 1.3em;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  p {
+    line-height: 1.5;
+    font-size: 0.9em;
   }
   input {
-    width: 100%;
+    width: 80%;
     height: 50px;
     border: none;
-    border: 1px solid black;
-    font-size: 1em;
+    border-bottom: 1px solid black;
     text-align: center;
     margin-bottom: 16px;
-    padding: 16px;
-    text-transform: uppercase;
-    border-radius: 5px;
+    padding: 0 16px;
+    padding-top: 25px;
     outline: none;
+    font-size: 0.8em;
+    margin: 16px auto;
+    border-radius: 0;
   }
   input:focus {
-    border: 2px solid #f9423a;
+    border-bottom: 2px solid #f9423a;
   }
 </style>

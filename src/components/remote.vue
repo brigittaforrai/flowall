@@ -21,8 +21,6 @@
                 @click="randomSvg"></button>
         <button class="circle random"
                 @click="random"></button>
-        <!-- <button class="circle"
-                @click="setRed"></button> -->
       </div>
     </div>
 
@@ -69,17 +67,23 @@ export default {
       this.savedVals = data.values
     })
 
-    // TODO
-    let btns = document.querySelectorAll('button.circle').forEach((btn) => {
-      btn.addEventListener('touchstart', () => {
-        btn.style.backgroundColor = "#f9423a"
-        btn.style.color = "white"
-      })
-      btn.addEventListener('touchend', () => {
-        btn.style.backgroundColor = "white"
-        btn.style.color = "#f9423a"
-      })
+    let random = document.querySelector('button.random')
+    let randomCircle = document.querySelector('button.random-circle')
+
+    random.addEventListener('touchstart', () => {
+      random.classList.add('active')
     })
+    random.addEventListener('touchend', () => {
+      random.classList.remove('active')
+    })
+
+    randomCircle.addEventListener('touchstart', () => {
+      randomCircle.classList.add('active')
+    })
+    randomCircle.addEventListener('touchend', () => {
+      randomCircle.classList.remove('active')
+    })
+
   },
   methods: {
     disconnect () {
@@ -96,9 +100,6 @@ export default {
       this.savedVals = randoms
       this.randomSvg()
     },
-    setRed() {
-      console.log('red todo');
-    },
     getRandom(min, max, step) {
       const random = Math.random() * (max-min) + min
       if (step === 1 || step === undefined) {
@@ -107,35 +108,7 @@ export default {
         const decimals = step.toString().split('.')[1].length
         return parseFloat(random.toFixed(decimals))
       }
-    },
-    // getOrientation() {
-    //   if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    //       DeviceOrientationEvent.requestPermission().then(permissionState => {
-    //         if (permissionState === 'granted') {
-    //           window.addEventListener('deviceorientation', (e) => {
-    //             console.log(e);
-    //           });
-    //         }
-    //       }).catch(console.error);
-    //   } else {
-    //     window.addEventListener('deviceorientation', (e) => {
-    //       console.log(e);
-    //     });
-    //   }
-    //   if (typeof DeviceMotionEvent.requestPermission === 'function') {
-    //     DeviceMotionEvent.requestPermission().then(permissionState => {
-    //         if (permissionState === 'granted') {
-    //           window.addEventListener('devicemotion', (e) => {
-    //             console.log(e);
-    //           });
-    //         }
-    //       }).catch(console.error);
-    //   } else {
-    //     window.addEventListener('deviceomotion', (e) => {
-    //       console.log(e);
-    //     });
-    //   }
-    // },
+    }
   }
 }
 </script>
@@ -178,6 +151,12 @@ button.random-circle {
 }
 button.random {
   background-image: url('./../assets/random.svg')
+}
+button.random-circle.active {
+  background-image: url('./../assets/random-circle-e.svg')
+}
+button.random.active {
+  background-image: url('./../assets/random-e.svg')
 }
 .config-item {
   text-align: left;

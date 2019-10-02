@@ -20,9 +20,7 @@
     </section>
 
     <section v-if="lang === 'ENG'">
-      A Design Hét Budapest flow témájához illően olyan generatív arculati struktúra született,
-      mely alapvetően a mozgásra épül és tetszőlegesen változtatható az összes paramétere.
-      Ez a játékosság, illetve a lassan és folyamatosan változó áramlás a flow élmény megtapasztalását kínálja a nézőnek.
+      Experience flow through Design Week's generative identity.
     </section>
 
     <div v-if="lang === 'HUN'">

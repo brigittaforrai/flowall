@@ -61,7 +61,7 @@ export default new Vuex.Store({
     },
     listen_connectionInfo({state, commit}) {
       socket.on('CONNECTION_INFO', (answer) => {
-        console.log(answer, 'connection info');
+        // console.log(answer, 'connection info');
         state.player = answer.name
         let id = answer.id
         state.hasPlayer = id

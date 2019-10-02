@@ -4,7 +4,7 @@
       <span>Deisgner</span>
       {{lang === 'HUN' ? 'Balogh Balázs' : 'Balázs Balogh'}}
       <br>
-      <a class="link black" href="http://studio.thatsit.hu/" target="about_blank">studio.thasit.hu</a>
+      <a class="link black" href="http://studio.thatsit.hu/" target="about_blank">studio.thatsit.hu/</a>
     </h1>
     <h1>
       <span>creative coder</span>

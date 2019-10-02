@@ -4,6 +4,7 @@
     <div class="controls">
       <div class="container">
         <div :key="s.name"
+             v-if="Object.keys(savedVals).length"
              v-for="s in inputs"
              :class="(s.type === 'big') ? 'big config-item' : 'config-item'">
           <label :for="s.name">{{isHun ? s._name : s.eng}}</label>

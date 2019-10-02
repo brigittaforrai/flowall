@@ -7,7 +7,6 @@
     "build": "VUE_APP_URL=brigittaforrai.com vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy:heroku": "git subtree push --prefix server heroku master",
-    "ghpages": "git subtree push --prefix dist origin gh-pages",
     "ghpages:force": "git push origin `git subtree split --prefix dist master`:gh-pages --force",
     "build:flowall": "VUE_APP_URL=flowall.space vue-cli-service build"
   },

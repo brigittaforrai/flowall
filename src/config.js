@@ -1,5 +1,5 @@
-const domain = 'brigittaforrai.com'
-// const domain = 'flowall.space'
+// const domain = 'brigittaforrai.com'
+const domain = 'flowall.space'
 
 const isProd = process.env.NODE_ENV === 'production'
 const server = isProd ? 'https://designhet2019.herokuapp.com/' : 'http://192.168.253.250:3001'

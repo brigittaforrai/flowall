@@ -1,21 +1,24 @@
-const path = require('path');
+const path = require('path')
+
+let publicP
 
 // todo .env
-const domain = 'brigittaforrai.com'
-// const domain = 'flowall.space'
+// const domain = 'brigittaforrai.com'
+const domain = 'flowall.space'
 
 const production = process.env.NODE_ENV === "production"
-let publicP
+
 
 if (production) {
   publicP = (domain === 'brigittaforrai.com') ? 'designhet2019' : '/'
 } else {
   publicP = '/'
 }
+const output = domain === 'brigittaforrai.com' ? 'docs' : 'dist'
 
 module.exports = {
   publicPath: publicP,
-  outputDir: 'docs',
+  outputDir: output,
   chainWebpack: config => {
     config.module
       .rule('eslint')

@@ -1,6 +1,6 @@
 <template>
   <header class="bold">
-    <img class="logo" src="./../assets/flowall-logo.png" @click="toggleInfo" alt="logo"></img>
+    <img class="logo" src="./../assets/flowall-logo.png" @click="toggleInfo" alt="logo"/>
     <div class="language-selector">
       <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang button circle' : 'lang button circle'">HUN</div>
       <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang button circle' : 'lang button circle'">ENG</div>

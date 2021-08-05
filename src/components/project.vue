@@ -91,7 +91,7 @@ export default {
 .player {
   position: absolute;
   left: 10px;
-  top: 180px;
+  top: 190px;
   text-align: left;
   color: white;
   font-size: 1.2em;

@@ -1,10 +1,16 @@
 <template>
   <header class="bold">
-    <img class="logo" src="./../assets/flowall-logo.png" @click="toggleInfo" alt="logo"/>
-    <div class="language-selector">
-      <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang button circle' : 'lang button circle'">HUN</div>
-      <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang button circle' : 'lang button circle'">ENG</div>
+    <div class="main">
+      <img class="logo" src="./../assets/flowall-logo.png" @click="toggleInfo" alt="logo"/>
+      <div class="language-selector">
+        <div @click="select('HUN')" :class="language === 'HUN' ? 'selected lang button circle' : 'lang button circle'">HUN</div>
+        <div @click="select('ENG')" :class="language === 'ENG' ? 'selected lang button circle' : 'lang button circle'">ENG</div>
+      </div>
     </div>
+    <div class="red_dot">
+      <img class="rd_logo" src="./../assets/reddot/RD.png" alt="red_dot_brand_design_winner_2021"/>
+    </div>
+
   </header>
 </template>
 
@@ -30,8 +36,7 @@ export default {
 <style scoped>
    header {
      display: flex;
-     align-items: center;
-     justify-content: space-between;
+     flex-direction: column;
      width: 100%;
      position: fixed;
      background-color: white;
@@ -39,6 +44,24 @@ export default {
      top: 0;
      z-index: 10;
      padding: 16px;
+     align-items: center;
+   }
+   header .main {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+   }
+   header .red_dot {
+     display: flex;
+     width: 100%;
+     flex-direction: row;
+     justify-content: flex-start;
+   }
+
+   header .red_dot .rd_logo {
+     width: 140px;
+     margin-top: 10px;
+     margin-left: -5px;
    }
    .logo {
      cursor: pointer;

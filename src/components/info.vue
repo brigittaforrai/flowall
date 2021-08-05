@@ -59,11 +59,11 @@ export default {
 <style scoped>
   .info {
     width: 100%;
-    height: calc(100% - 72px);
+    height: calc(100% - 180px);
     overflow: auto;
     position: absolute;
     left: 0;
-    top: 72px;
+    top: 180px;
     padding: 16px;
     background-color: white;
     text-align: left;

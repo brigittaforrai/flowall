@@ -41,7 +41,7 @@ export default {
   .home {
     width: 100%;
     height: 100%;
-    padding-top: 64px;
+    padding-top: 180px;
     overflow: auto;
     max-width: 768px;
     margin-left: auto;
